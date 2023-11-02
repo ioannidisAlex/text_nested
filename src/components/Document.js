@@ -1,16 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react';
-import CollapsedDocument from './CollapsedDocument';
+import React, {useState, useRef} from 'react';
 
 function Document({ title, children }) {
     const [collapsed, setCollapsed] = useState(false);
-    const [maxHeight, setMaxHeight] = useState(null);
     const collapsible = useRef(null);
-
-    useEffect(() => {
-        if (collapsible.current.offsetHeight > maxHeight || !maxHeight) {
-            setMaxHeight(collapsible.current.offsetHeight);
-        }
-    }, []);
 
     return (
         <div style={{
@@ -21,8 +13,8 @@ function Document({ title, children }) {
             <p
                 ref={collapsible}
                 style={{
-                    transition: "max-height 1s ease-out",
-                    maxHeight: collapsed? maxHeight: 0,
+                    maxHeight: collapsed? null: 0,
+                    overflowX: "auto"
                 }}
             >{children}</p>
         </div>

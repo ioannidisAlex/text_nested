@@ -1,15 +1,17 @@
 import React, {useState, useRef} from 'react';
+import {Icon} from "./Icon";
 
-function Document({ title, children }) {
+function Document({ title, icon, color, children }) {
     const [collapsed, setCollapsed] = useState(false);
     const collapsible = useRef(null);
 
     return (
-        <div style={{
-            borderTop: "black solid 1px",
-            padding: "1rem"
-        }}>
-            <h1>{title}</h1><button onClick={() => setCollapsed(!collapsed)}>Click</button>
+        <div className='document'>
+            <button className='header-button' onClick={() => setCollapsed(!collapsed)}>
+                <p className='element-icon' style={{backgroundColor: color}}>{icon}</p>
+                <p>{title}</p>
+                <Icon>{collapsed? 'expand_more' : 'expand_less'}</Icon>
+            </button>
             <p
                 ref={collapsible}
                 style={{

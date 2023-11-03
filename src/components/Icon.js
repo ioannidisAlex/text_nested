@@ -1,7 +1,3 @@
 export function Icon({ children }) {
-    return (
-        <span className="material-symbols-outlined">
-            {children}
-        </span>
-    )
+	return <span className="material-symbols-outlined">{children}</span>;
 }
